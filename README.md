@@ -11,7 +11,7 @@ Under the hood, this simply automates the process described in the official docu
 You can install this package from PyPi:
 
 ```bash
-pip install fastapi_offline
+pip install fastapi-offline
 ```
 
 # Example

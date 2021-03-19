@@ -1,7 +1,7 @@
 from pathlib import Path
 from urllib.request import urlretrieve
 from setuptools import setup
-from setuptools.command.install import install
+from setuptools.command.sdist import sdist
 
 __version__ = "1.0.0"
 
@@ -16,7 +16,7 @@ DOWNLOADS = (
 )
 
 
-class InstallWrapper(install):
+class SDistWrapper(sdist):
     def run(self) -> None:
         "Download files into static/, then pass through to normal install"
         # Find ourself
@@ -28,17 +28,18 @@ class InstallWrapper(install):
         for download in DOWNLOADS:
             urlretrieve(download, static_path / download.split("/")[-1])
 
-        install.run(self)
+        sdist.run(self)
 
 
 setup(
     name="fastapi_offline",
     version=__version__,
     author="Neal Turett",
+    author_email="turettn@gmail.com",
     description="FastAPI without reliance on CDNs for docs",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/turettn/fastapi-offline",
+    url="https://github.com/turettn/fastapi_offline",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
@@ -47,8 +48,8 @@ setup(
     ],
     packages=["fastapi_offline"],
     package_data={"fastapi_offline": ["static/*"]},
-    python_requires=">=3",
+    python_requires=">=3.6",
     install_requires=["aiofiles", "fastapi"],
     tests_require=["pytest", "requests"],
-    cmdclass={"install": InstallWrapper},
+    cmdclass={"sdist": SDistWrapper},
 )
