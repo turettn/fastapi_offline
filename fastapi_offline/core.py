@@ -1,4 +1,4 @@
-"Provide non-CDN-dependent Swagger & Redoc pages to FastAPI"
+"""Provide non-CDN-dependent Swagger & Redoc pages to FastAPI"""
 from pathlib import Path
 from typing import Any, TYPE_CHECKING
 from fastapi import FastAPI
@@ -16,7 +16,7 @@ _STATIC_PATH = Path(__file__).parent / "static"
 
 
 def FastAPIOffline(*args: Any, **kwargs: Any) -> FastAPI:
-    "Return a FastAPI obj that doesn't rely on CDN for the documentation page"
+    """Return a FastAPI obj that doesn't rely on CDN for the documentation page"""
     # Disable the normal doc & redoc pages
     kwargs["docs_url"] = None
     kwargs["redoc_url"] = None
