@@ -42,7 +42,7 @@ async def root():
     return {"message": "Hello World"}
 ```
 
-Any options passed to FastAPIOffline() except `docs_url` and `redoc_url` are passed through to FastAPI.
+Any options passed to `FastAPIOffline()` except `docs_url` and `redoc_url` are passed through to `FastAPI()`.
 
 # Licensing
 
