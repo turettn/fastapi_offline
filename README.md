@@ -44,6 +44,15 @@ async def root():
 
 Any options passed to `FastAPIOffline()` except `docs_url` and `redoc_url` are passed through to `FastAPI()`.
 
+## Disabling Docs Page
+
+If you wish to [disable the docs page](https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url), for 
+example in a sub-application, revert to using the default `FastAPI()` class.
+
+```py
+app = FastAPI(openapi_url=None)
+```
+
 # Licensing
 
 * This code is released under the MIT license.
