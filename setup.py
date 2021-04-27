@@ -3,7 +3,7 @@ from urllib.request import urlretrieve
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 
 BASE_PATH = Path(__file__).parent
