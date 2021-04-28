@@ -25,7 +25,7 @@ jobs:
         run: |
           python setup.py sdist
           python -m pip install dist/*.tar.gz
-          python -m pip install pytest flake8 black mypy
+          python -m pip install pytest pytest-cov flake8 black mypy
       - name: Check black compliance
         run : |
           black --check fastapi_offline
