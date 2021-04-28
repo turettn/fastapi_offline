@@ -10,7 +10,7 @@ from fastapi.openapi.docs import (
 from fastapi.staticfiles import StaticFiles
 
 if TYPE_CHECKING:
-    from fastapi import Response
+    from fastapi import Response  # pragma: no cover
 
 _STATIC_PATH = Path(__file__).parent / "static"
 
