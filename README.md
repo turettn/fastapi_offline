@@ -1,5 +1,7 @@
 # Overview
 
+[![](https://img.shields.io/pypi/v/fastapi-offline.svg)](https://pypi.python.org/pypi/fastapi-offline/)
+
 [FastAPI](https://fastapi.tiangolo.com/) is awesome, but the documentation pages (Swagger or Redoc) all depend on external CDNs, which is problematic if you want to run on disconnected networks.
 
 This package includes the required files from the CDN and serves them locally.  It also provides a super-simple way to get a FastAPI instance configured to use those files.
