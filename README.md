@@ -1,6 +1,8 @@
 # Overview
 
 [![](https://img.shields.io/pypi/v/fastapi-offline.svg)](https://pypi.python.org/pypi/fastapi-offline/)
+[![Test](https://github.com/turettn/fastapi_offline/actions/workflows/test.yml/badge.svg)](https://github.com/turettn/fastapi_offline/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/turettn/fastapi_offline/branch/main/graph/badge.svg)](https://codecov.io/gh/turettn/fastapi_offline)
 
 [FastAPI](https://fastapi.tiangolo.com/) is awesome, but the documentation pages (Swagger or Redoc) all depend on external CDNs, which is problematic if you want to run on disconnected networks.
 
