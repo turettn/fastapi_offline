@@ -46,9 +46,9 @@ async def root():
     return {"message": "Hello World"}
 ```
 
-Any options passed to `FastAPIOffline()` except `docs_url` and `redoc_url` are passed through to `FastAPI()`.
+Any options passed to `FastAPIOffline()` except `docs_url`, `redoc_url`, and `favicon_url` are passed through to `FastAPI()`.
 
-## Disabling Docs Page
+# Disabling Docs Page
 
 If you wish to [disable the docs page](https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url), for 
 example in a sub-application, revert to using the default `FastAPI()` class.
@@ -56,9 +56,19 @@ example in a sub-application, revert to using the default `FastAPI()` class.
 ```py
 app = FastAPI(openapi_url=None)
 ```
+# Using a custom shortcut icon
+
+By default, the FastAPI `favicon.png` is included and used as the shortcut icon on the docs pages.  If you want to use a different one, you can specify it with the `favicon_url` argument:
+
+```py
+app = FastAPIOffline(
+    favicon_url="http://my.cool.site/favicon.png"
+)
+```
 
 # Licensing
 
 * This code is released under the MIT license.
 * Parts of Swagger are included in this package.  The original license ([Apache 2.0](https://swagger.io/license/)) and copyright apply to those files.
 * Parts of Redoc are included in this package.  The original license ([MIT](https://github.com/Redocly/redoc/blob/master/LICENSE)) and copyright apply to those files.
+* The FastAPI `favicon.png` file is included in this package.  The original license ([MIT](https://github.com/Redocly/redoc/blob/master/LICENSE)) and copyright apply to that file.

@@ -31,6 +31,11 @@ def test_read_docs():
 
 # Check the static pages
 def test_read_statics():
-    for page in ["swagger-ui-bundle.js", "swagger-ui.css", "redoc.standalone.js"]:
+    for page in [
+        "swagger-ui-bundle.js",
+        "swagger-ui.css",
+        "redoc.standalone.js",
+        "favicon.png",
+    ]:
         response = client.get("/static-offline-docs/" + page)
         assert response.status_code == 200
