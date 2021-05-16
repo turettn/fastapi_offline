@@ -60,6 +60,7 @@ def FastAPIOffline(*args: Any, **kwargs: Any) -> FastAPI:
             openapi_url=f"{root}{openapi_url}",
             title=app.title + " - ReDoc",
             redoc_js_url=f"{root}/static-offline-docs/redoc.standalone.js",
+            with_google_fonts=False,
         )
 
     # Return the FastAPI object
