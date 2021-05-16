@@ -13,6 +13,7 @@ DOWNLOADS = (
     "https://cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui-bundle.js",
     "https://cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui.css",
     "https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js",
+    "https://fastapi.tiangolo.com/img/favicon.png",
 )
 
 
