@@ -53,6 +53,6 @@ setup(
     python_requires=">=3.6",
     install_requires=["aiofiles", "fastapi"],
     tests_require=["pytest", "requests"],
-    setup_requires=["fastapi"],
+    setup_requires=["fastapi", "aiofiles"],
     cmdclass={"sdist": SDistWrapper},
 )
