@@ -3,30 +3,31 @@ from urllib.request import urlretrieve
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.1.0"
+
+__version__ = "1.2.0"
 
 
 BASE_PATH = Path(__file__).parent
 README = (BASE_PATH / "README.md").read_text()
 
-DOWNLOADS = (
-    "https://cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui-bundle.js",
-    "https://cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui.css",
-    "https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js",
-    "https://fastapi.tiangolo.com/img/favicon.png",
-)
-
 
 class SDistWrapper(sdist):
     def run(self) -> None:
         "Download files into static/, then pass through to normal install"
+        from fastapi_offline.consts import SWAGGER_JS, SWAGGER_CSS, REDOC_JS, FAVICON
+
         # Find ourself
 
         static_path = BASE_PATH / "fastapi_offline" / "static"
         static_path.mkdir(exist_ok=True)
 
         # Download files
-        for download in DOWNLOADS:
+        for download in (
+            SWAGGER_JS,
+            SWAGGER_CSS,
+            REDOC_JS,
+            FAVICON,
+        ):
             urlretrieve(download, static_path / download.split("/")[-1])
 
         sdist.run(self)
@@ -52,5 +53,6 @@ setup(
     python_requires=">=3.6",
     install_requires=["aiofiles", "fastapi"],
     tests_require=["pytest", "requests"],
+    setup_requires=["fastapi"],
     cmdclass={"sdist": SDistWrapper},
 )
