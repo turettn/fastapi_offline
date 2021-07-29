@@ -4,7 +4,7 @@ from setuptools import setup
 from setuptools.command.sdist import sdist
 
 
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 
 
 BASE_PATH = Path(__file__).parent
