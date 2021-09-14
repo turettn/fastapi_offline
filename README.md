@@ -46,16 +46,8 @@ async def root():
     return {"message": "Hello World"}
 ```
 
-Any options passed to `FastAPIOffline()` except `docs_url`, `redoc_url`, and `favicon_url` are passed through to `FastAPI()`.
+Any options passed to `FastAPIOffline()` except `docs_url`, `redoc_url`, and `favicon_url` are passed through to `FastAPI()`.  `docs_url` and `redoc_url` are handled by `fastapi-offline`, and use the same syntax as normal `fastapi` library.
 
-# Disabling Docs Page
-
-If you wish to [disable the docs page](https://fastapi.tiangolo.com/tutorial/metadata/#openapi-url), for 
-example in a sub-application, revert to using the default `FastAPI()` class.
-
-```py
-app = FastAPI(openapi_url=None)
-```
 # Using a custom shortcut icon
 
 By default, the FastAPI `favicon.png` is included and used as the shortcut icon on the docs pages.  If you want to use a different one, you can specify it with the `favicon_url` argument:
