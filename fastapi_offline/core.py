@@ -71,6 +71,7 @@ def FastAPIOffline(
             return get_swagger_ui_oauth2_redirect_html()
 
     if redoc_url is not None:
+
         @app.get(redoc_url, include_in_schema=False)
         async def redoc_html(request: Request) -> "Response":
             root = request.scope.get("root_path")
