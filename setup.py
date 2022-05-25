@@ -51,8 +51,8 @@ setup(
     packages=["fastapi_offline"],
     package_data={"fastapi_offline": ["static/*"]},
     python_requires=">=3.6",
-    install_requires=["aiofiles", "fastapi"],
+    install_requires=["fastapi"],
     tests_require=["pytest", "requests"],
-    setup_requires=["fastapi", "aiofiles"],
+    setup_requires=["fastapi"],
     cmdclass={"sdist": SDistWrapper},
 )
