@@ -50,7 +50,7 @@ setup(
     ],
     packages=["fastapi_offline"],
     package_data={"fastapi_offline": ["static/*"]},
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     install_requires=[FASTAPI_VER],
     tests_require=["pytest", "requests"],
     setup_requires=[FASTAPI_VER],
