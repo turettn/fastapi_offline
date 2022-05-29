@@ -49,7 +49,7 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
     ],
     packages=["fastapi_offline"],
-    package_data={"fastapi_offline": ["static/*"]},
+    package_data={"fastapi_offline": ["static/*", "py.typed"]},
     python_requires=">=3.7",
     install_requires=[FASTAPI_VER],
     tests_require=["pytest", "requests"],
