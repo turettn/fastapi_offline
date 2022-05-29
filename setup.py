@@ -4,12 +4,12 @@ from setuptools import setup
 from setuptools.command.sdist import sdist
 
 
-__version__ = "1.3.2"
+__version__ = "1.4.0"
 
 
 BASE_PATH = Path(__file__).parent
 README = (BASE_PATH / "README.md").read_text()
-
+FASTAPI_VER = "fastapi>=0.75.2"
 
 class SDistWrapper(sdist):
     def run(self) -> None:
@@ -50,9 +50,9 @@ setup(
     ],
     packages=["fastapi_offline"],
     package_data={"fastapi_offline": ["static/*"]},
-    python_requires=">=3.6",
-    install_requires=["aiofiles", "fastapi"],
+    python_requires=">=3.7",
+    install_requires=[FASTAPI_VER],
     tests_require=["pytest", "requests"],
-    setup_requires=["fastapi", "aiofiles"],
+    setup_requires=[FASTAPI_VER],
     cmdclass={"sdist": SDistWrapper},
 )
