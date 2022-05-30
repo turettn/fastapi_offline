@@ -29,6 +29,9 @@ def FastAPIOffline(
     # Grab the user specified favicon url (if present)
     favicon_url = kwargs.pop("favicon_url", None)
 
+    # Set path to to static files or default to /static-offline-docs
+    static_url = kwargs.pop("static_url", "/static-offline-docs")
+
     # Create the FastAPI object
     app = FastAPI(*args, **kwargs)
 
@@ -41,7 +44,7 @@ def FastAPIOffline(
 
     # Set up static file mount
     app.mount(
-        "/static-offline-docs",
+        static_url,
         StaticFiles(directory=_STATIC_PATH.as_posix()),
         name="static-offline-docs",
     )
@@ -53,7 +56,7 @@ def FastAPIOffline(
             root = request.scope.get("root_path")
 
             if favicon_url is None:
-                favicon = f"{root}/static-offline-docs/favicon.png"
+                favicon = f"{root}{static_url}/favicon.png"
             else:
                 favicon = favicon_url
 
@@ -61,8 +64,8 @@ def FastAPIOffline(
                 openapi_url=f"{root}{openapi_url}",
                 title=app.title + " - Swagger UI",
                 oauth2_redirect_url=swagger_ui_oauth2_redirect_url,
-                swagger_js_url=f"{root}/static-offline-docs/swagger-ui-bundle.js",
-                swagger_css_url=f"{root}/static-offline-docs/swagger-ui.css",
+                swagger_js_url=f"{root}{static_url}/swagger-ui-bundle.js",
+                swagger_css_url=f"{root}{static_url}/swagger-ui.css",
                 swagger_favicon_url=favicon,
             )
 
@@ -77,14 +80,14 @@ def FastAPIOffline(
             root = request.scope.get("root_path")
 
             if favicon_url is None:
-                favicon = f"{root}/static-offline-docs/favicon.png"
+                favicon = f"{root}{static_url}/favicon.png"
             else:
                 favicon = favicon_url
 
             return get_redoc_html(
                 openapi_url=f"{root}{openapi_url}",
                 title=app.title + " - ReDoc",
-                redoc_js_url=f"{root}/static-offline-docs/redoc.standalone.js",
+                redoc_js_url=f"{root}{static_url}/redoc.standalone.js",
                 with_google_fonts=False,
                 redoc_favicon_url=favicon,
             )
