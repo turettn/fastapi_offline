@@ -4,9 +4,10 @@ from fastapi_offline import FastAPIOffline
 
 DOC = "/asdf"
 REDOC = "/qwerty"
+STATIC = "/azerty"
 
-# Custom paths for both
-app1 = FastAPIOffline(docs_url=DOC, redoc_url=REDOC)
+# Custom paths for all
+app1 = FastAPIOffline(docs_url=DOC, redoc_url=REDOC, static_url=STATIC)
 client1 = TestClient(app1)
 
 # Disable redoc
@@ -40,3 +41,12 @@ def test_custom_redocs():
 
     assert client3.get("/redoc").status_code == 404
     assert client3.get(REDOC).status_code == 200
+
+def test_static():
+    """Make sure static files appears at the right place"""
+    for static_file in ["swagger-ui-bundle.js", "swagger-ui.css", "redoc.standalone.js"]:
+        assert client1.get(f"/static-offline-docs/{static_file}").status_code == 404
+        assert client1.get(f"{STATIC}/{static_file}").status_code == 200
+
+        assert client2.get(f"/static-offline-docs/{static_file}").status_code == 200
+        assert client2.get(f"{STATIC}/{static_file}").status_code == 404

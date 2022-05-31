@@ -46,7 +46,9 @@ async def root():
     return {"message": "Hello World"}
 ```
 
-Any options passed to `FastAPIOffline()` except `docs_url`, `redoc_url`, and `favicon_url` are passed through to `FastAPI()`.  `docs_url` and `redoc_url` are handled by `fastapi-offline`, and use the same syntax as normal `fastapi` library.
+Any options passed to `FastAPIOffline()` except `docs_url`, `redoc_url`, `favicon_url`, and `static_url` are passed through to `FastAPI()`.  `docs_url` and `redoc_url` are handled by `fastapi-offline`, and use the same syntax as normal `fastapi` library.
+
+`static_url` can be used to set the path for the static js/css files, e.g. `static_url=/static-files` (default: `/static-offline-docs`).
 
 # Using a custom shortcut icon
 
