@@ -1,20 +1,22 @@
 from pathlib import Path
 from urllib.request import urlretrieve
+
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-
-__version__ = "1.5.1"
+__version__ = "1.5.2"
 
 
 BASE_PATH = Path(__file__).parent
 README = (BASE_PATH / "README.md").read_text()
-FASTAPI_VER = "fastapi>=0.75.2"
+FASTAPI_VER = "fastapi>=0.75.2,!=0.89.0"
+TEST_DEPS = ["pytest", "requests", "starlette[full]"]
+
 
 class SDistWrapper(sdist):
     def run(self) -> None:
         "Download files into static/, then pass through to normal install"
-        from fastapi_offline.consts import SWAGGER_JS, SWAGGER_CSS, REDOC_JS, FAVICON
+        from fastapi_offline.consts import FAVICON, REDOC_JS, SWAGGER_CSS, SWAGGER_JS
 
         # Find ourself
 
@@ -52,7 +54,8 @@ setup(
     package_data={"fastapi_offline": ["static/*", "py.typed"]},
     python_requires=">=3.7",
     install_requires=[FASTAPI_VER],
-    tests_require=["pytest", "requests"],
+    tests_require=TEST_DEPS,
     setup_requires=[FASTAPI_VER],
+    extras_require={"test": TEST_DEPS},
     cmdclass={"sdist": SDistWrapper},
 )

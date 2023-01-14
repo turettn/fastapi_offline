@@ -1,6 +1,7 @@
 """Provide non-CDN-dependent Swagger & Redoc pages to FastAPI"""
 from pathlib import Path
-from typing import Any, Optional, TYPE_CHECKING
+from typing import Any, Optional
+
 from fastapi import FastAPI, Request
 from fastapi.openapi.docs import (
     get_redoc_html,
@@ -8,9 +9,7 @@ from fastapi.openapi.docs import (
     get_swagger_ui_oauth2_redirect_html,
 )
 from fastapi.staticfiles import StaticFiles
-
-if TYPE_CHECKING:
-    from fastapi import Response  # pragma: no cover
+from starlette.responses import HTMLResponse
 
 _STATIC_PATH = Path(__file__).parent / "static"
 
@@ -52,7 +51,7 @@ def FastAPIOffline(
     if docs_url is not None:
         # Define the doc and redoc pages, pointing at the right files
         @app.get(docs_url, include_in_schema=False)
-        async def custom_swagger_ui_html(request: Request) -> "Response":
+        async def custom_swagger_ui_html(request: Request) -> HTMLResponse:
             root = request.scope.get("root_path")
 
             if favicon_url is None:
@@ -70,13 +69,13 @@ def FastAPIOffline(
             )
 
         @app.get(swagger_ui_oauth2_redirect_url, include_in_schema=False)
-        async def swagger_ui_redirect() -> "Response":
+        async def swagger_ui_redirect() -> HTMLResponse:
             return get_swagger_ui_oauth2_redirect_html()
 
     if redoc_url is not None:
 
         @app.get(redoc_url, include_in_schema=False)
-        async def redoc_html(request: Request) -> "Response":
+        async def redoc_html(request: Request) -> HTMLResponse:
             root = request.scope.get("root_path")
 
             if favicon_url is None:
