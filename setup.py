@@ -9,7 +9,7 @@ __version__ = "1.5.2"
 
 BASE_PATH = Path(__file__).parent
 README = (BASE_PATH / "README.md").read_text()
-FASTAPI_VER = "fastapi>=0.75.2"
+FASTAPI_VER = "fastapi>=0.75.2,!=0.89.0"
 
 class SDistWrapper(sdist):
     def run(self) -> None:
