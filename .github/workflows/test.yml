@@ -24,7 +24,7 @@ jobs:
       - name: Install package, dependencies, and test tools
         run: |
           python setup.py sdist
-          python -m pip install dist/*.tar.gz
+          python -m pip install `ls -1 dist/*.tar.gz`[test]
           python -m pip install pytest pytest-cov flake8 black mypy
       - name: Check black compliance
         run : |
