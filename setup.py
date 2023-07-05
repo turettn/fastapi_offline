@@ -4,12 +4,12 @@ from urllib.request import urlretrieve
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.5.3"
+__version__ = "1.6.0"
 
 
 BASE_PATH = Path(__file__).parent
 README = (BASE_PATH / "README.md").read_text()
-FASTAPI_VER = "fastapi>=0.75.2,!=0.89.0"
+FASTAPI_VER = "fastapi>=0.99.0"
 TEST_DEPS = ["pytest", "requests", "starlette[full]"]
 
 
