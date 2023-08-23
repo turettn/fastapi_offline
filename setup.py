@@ -1,10 +1,10 @@
 from pathlib import Path
-from urllib.request import urlretrieve
+from urllib.request import build_opener, install_opener, urlretrieve
 
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.6.0"
+__version__ = "1.6.1"
 
 
 BASE_PATH = Path(__file__).parent
@@ -22,6 +22,13 @@ class SDistWrapper(sdist):
 
         static_path = BASE_PATH / "fastapi_offline" / "static"
         static_path.mkdir(exist_ok=True)
+
+        # Set a header to avoid cloudflare's bot blocker
+        opener = build_opener()
+        opener.addheaders = [
+            ("User-agent", f"fastapi-offline-packager / {__version__}")
+        ]
+        install_opener(opener)
 
         # Download files
         for download in (
