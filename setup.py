@@ -4,7 +4,7 @@ from urllib.request import build_opener, install_opener, urlretrieve
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.6.1"
+__version__ = "1.7.0"
 
 
 BASE_PATH = Path(__file__).parent
@@ -59,7 +59,7 @@ setup(
     ],
     packages=["fastapi_offline"],
     package_data={"fastapi_offline": ["static/*", "py.typed"]},
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=[FASTAPI_VER],
     tests_require=TEST_DEPS,
     setup_requires=[FASTAPI_VER],
