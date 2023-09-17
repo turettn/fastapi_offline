@@ -66,6 +66,7 @@ def FastAPIOffline(
                 swagger_js_url=f"{root}{static_url}/swagger-ui-bundle.js",
                 swagger_css_url=f"{root}{static_url}/swagger-ui.css",
                 swagger_favicon_url=favicon,
+                swagger_ui_parameters=app.swagger_ui_parameters,
             )
 
         @app.get(swagger_ui_oauth2_redirect_url, include_in_schema=False)
