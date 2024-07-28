@@ -1,4 +1,5 @@
 """Provide non-CDN-dependent Swagger & Redoc pages to FastAPI"""
+
 from pathlib import Path
 from typing import Any, Optional
 
