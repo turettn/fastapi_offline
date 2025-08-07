@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
-        run: pip install flit setuptools pytest requests starlette[full]
+        run: pip install flit setuptools pytest requests starlette[full] fastapi
       - name: Install package, dependencies, and test tools
         run: |
           python setup.py sdist
