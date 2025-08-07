@@ -4,7 +4,7 @@ from urllib.request import build_opener, install_opener, urlretrieve
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.7.3"
+__version__ = "1.7.4"
 
 
 BASE_PATH = Path(__file__).parent
