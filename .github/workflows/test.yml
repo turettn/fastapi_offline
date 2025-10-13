@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
       fail-fast: false
     
     steps:
@@ -20,10 +20,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
-        run: pip install flit setuptools pytest requests starlette[full] fastapi
+        run: pip install flit setuptools pytest requests starlette[full] fastapi build
       - name: Install package, dependencies, and test tools
         run: |
-          python setup.py sdist
+          python -m build . -sw
           python -m pip install `ls -1 dist/*.tar.gz`[test]
           python -m pip install pytest pytest-cov flake8 black mypy
       - name: Check black compliance

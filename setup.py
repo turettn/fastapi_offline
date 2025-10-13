@@ -4,7 +4,7 @@ from urllib.request import build_opener, install_opener, urlretrieve
 from setuptools import setup
 from setuptools.command.sdist import sdist
 
-__version__ = "1.7.4"
+__version__ = "1.7.5"
 
 
 BASE_PATH = Path(__file__).parent
@@ -53,7 +53,6 @@ setup(
     url="https://github.com/turettn/fastapi_offline",
     license="MIT",
     classifiers=[
-        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
     ],
