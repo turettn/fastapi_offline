@@ -8,7 +8,7 @@
 
 This package includes the required files from the CDN and serves them locally.  It also provides a super-simple way to get a FastAPI instance configured to use those files.
 
-Under the hood, this simply automates the process described in the official documentation [here](https://fastapi.tiangolo.com/advanced/extending-openapi/#self-hosting-javascript-and-css-for-docs).
+Under the hood, this simply automates the process described in the official documentation [here](https://fastapi.tiangolo.com/how-to/custom-docs-ui-assets/#self-hosting-javascript-and-css-for-docs).
 
 # Installation
 
